@@ -98,7 +98,7 @@ const SignInButton = () => {
 			</div>
 		</div>
       ) : (
-		<Link href='/signin-signup' onClick={() =>signIn()}><button className='hover:text-gray-800 hover:bg-gray-100 text-Gray text-sm rounded-lg  mx-1 py-2 px-5 duration-150 col-span-1'>Sign In / Sign Up</button></Link>
+		<button onClick={ async () => await signIn()} className='hover:text-gray-800 hover:bg-gray-100 text-Gray text-sm rounded-lg  mx-1 py-2 px-5 duration-150 col-span-1'><Link href='/signin-signup' >Sign In / Sign Up</Link></button>
       )}
     </>
   )

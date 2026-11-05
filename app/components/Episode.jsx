@@ -6,11 +6,12 @@ import { vazir, lalezar } from '../utils/fonts';
 import { BsFilter } from "react-icons/bs";
 import { VscChevronRight } from "react-icons/vsc";
 
-const Episode = async ({ data, episodeRoute, id }) => {
+const Episode = ({ data, episodeRoute, id }) => {
 	const podcasts = data;
 	const podcast = podcasts.filter((podcast) => {
 	  return podcast.id === id
 	})
+
 	const episode = podcast[0].episodes.filter((episode) => {
 	  return episode.id === episodeRoute
 	})
@@ -39,7 +40,7 @@ const Episode = async ({ data, episodeRoute, id }) => {
   return (
 	<>
 	  {episode.map((episode) => (
-	  	<div  className={`${vazir.className} ${'mt-8'}`}>
+	  	<div key={episode.id} className={`${vazir.className} ${'mt-8'}`}>
         	<div className='flex items-center space-x-2'>
 				<div className='flex space-x-1 text-gray-600 border-gray-300 border-e-[1px] px-2'>
 					<BsFilter className='text-xl' />

@@ -82,7 +82,7 @@ const Info = ({title, summary, transcript, refrences, tags}) => {
 			<span className="flex justify-start text-gray-800 lg:mx-36">
 			<div className={`${vazir.className} ${"space-y-1 space-x-1 "}`}>
 				{tags ? tags.map((tag) => (
-					<div className="inline-block text-blue-500 bg-blue-100 text-sm px-2 pt-1 rounded-md">{tag.name}</div>
+					<div key={tags.indexOf(tag)} className="inline-block text-blue-500 bg-blue-100 text-sm px-2 pt-1 rounded-md">{tag.name}</div>
 
 				)) : ''}
 			</div>

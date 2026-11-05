@@ -206,9 +206,9 @@ const SectionsPage = ({data, episodes, isAudioPlay}) => {
 					<div id="section-body" className="snap-x relative bg-white overflow-x-auto px-2 py-2 scroll-smooth">
 						<div className="section-child inline-flex relative">
  							{sections.map((section) => (
-								<div className="snap-end relative">
+								<div key={section.number} className="snap-end relative">
 									<div className="">
-										<button id="section-btn" className={`${vazir.className} ${"overflow-hidden relative rounded-lg bg-White py-4 px-3 md:w-[180px] w-[160px] sm:text-md vazir text-sm mx-1 duration-150 inline-block select-none truncate"}`} timeStart={section.timeStart} sectionNumber={sections.indexOf(section)} onClick={changeCurrentTime}>
+										<button id="section-btn" className={`${vazir.className} ${"overflow-hidden relative rounded-lg bg-White py-4 px-3 md:w-[180px] w-[160px] sm:text-md vazir text-sm mx-1 duration-150 inline-block select-none truncate"}`} timestart={section.timeStart} sectionnumber={sections.indexOf(section)} onClick={changeCurrentTime}>
 											{section.title}
 											<span id="section-progressbar" className="inline-block absolute top-0 left-0 bg-[#b8c7ff26] w-0 h-full z-10" ></span>
 										</button>

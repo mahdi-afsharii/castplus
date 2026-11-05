@@ -13,7 +13,8 @@ async function fetchUsers() {
 	return users;
 }
 
-const PodcastPage = async ({params: { id }}) => {
+const PodcastPage = async ({ params }) => {
+	const { id } = await params;
 	const users = await fetchUsers()
 	const podcasts = await fetchPodcasts();
   return (

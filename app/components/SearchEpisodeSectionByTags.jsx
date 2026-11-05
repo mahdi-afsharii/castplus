@@ -51,7 +51,7 @@ const SearchEpisodeSectionByTags = ({ tags, searchTagModalRefrence, episodeData 
 					<div className='mt-6'>
 						<p className='text-gray-400 text-sm mb-1 mt-3'>episode tags</p>
 						{tags.map((tag) => (
-							<div className='hover:text-blue-600 inline-block text-blue-500 bg-blue-100 text-xs px-2 py-[2px] mx-0.5 rounded-md cursor-pointer duration-75' onClick={(e) =>changeInputValue(e.target.innerHTML)}>{tag}</div>
+							<div key={tag} className='hover:text-blue-600 inline-block text-blue-500 bg-blue-100 text-xs px-2 py-[2px] mx-0.5 rounded-md cursor-pointer duration-75' onClick={(e) =>changeInputValue(e.target.innerHTML)}>{tag}</div>
 						))}
 					</div>
 					<div className='sm:mt-6 mt-8 w-full'>
@@ -62,7 +62,7 @@ const SearchEpisodeSectionByTags = ({ tags, searchTagModalRefrence, episodeData 
 							</div> :
 							<>
 								{filteredSections.map((section) => (
-									<>
+									<div key={section.number}>
 										<Link href={`${pathName}?timeStart=${section.timeStart}`} className='cursor-pointer' onClick={hideSearchTagModal}>
 											<div className='hover:bg-gray-100 grid grid-cols-12 p-1 rounded-md cursor-pointer duration-75'>
 												<div className='col-span-10 space-y-1'>
@@ -78,7 +78,7 @@ const SearchEpisodeSectionByTags = ({ tags, searchTagModalRefrence, episodeData 
 											</div>
 										</Link>
 										{filteredSections.indexOf(section) !== filteredSections.length-1 ? <hr className='my-1' /> : ''}
-									</>
+									</div>
 								))}
 							</>
 						}

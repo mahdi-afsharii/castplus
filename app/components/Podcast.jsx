@@ -3,6 +3,7 @@ import { vazir, vazirBold, lalezar, nunito } from '../utils/fonts';
 import EpisodeList from '@/app/components/EpisodeList'
 import Banner from '@/app/img/banner.svg'
 import { FavoriteDesktopButton, FavoriteMobileButton } from './FavoriteButton';
+import PodcastIcon from '@/app/img/podcast-icon.png'
 
 const Podcast = async ({ id, data, usersData }) => {
 	const podcasts =  data;
@@ -12,14 +13,14 @@ const Podcast = async ({ id, data, usersData }) => {
   return (
 	<div>
 	  	{podcast.map((podcast) => (
-			<div className='xl:container xl:mx-auto container mx-auto p-6'>
+			<div className='xl:container xl:mx-auto container mx-auto p-6' key={podcast.id}>
 				<div className='lg:hidden block relative bg-white overflow-hidden rounded-xl mb-6 md:mb-8 border-[1px] border-border-gray lg:col-span-4 col-span-1 lg:sticky lg:top-40 lg:right-0 w-full h-fit ltr'>
 					<div>
 						<div className='relative flex flex-col p-3'>
 							<div className='flex items-center h-full space-x-2'>
 								<div className='relative justify-center'>
 									<div className='md:w-32 md:h-32 sm:w-28 sm:h-28 w-20 h-20'>
-										<Image className='rounded-full w-full h-full object-cover' src={podcast.thumbnail} alt='podcast logo' width='300' height='300'/>
+										<Image className='rounded-full w-full h-full object-cover' src={podcast.thumbnail ? podcast.thumbnail : PodcastIcon} alt='podcast logo' width='300' height='300'/>
 									</div>
 								</div>
 								<div className='flex flex-col justify-center w-full h-full'>
@@ -62,7 +63,7 @@ const Podcast = async ({ id, data, usersData }) => {
 								<div className='relative flex flex-col pt-3 px-6'>
 									<div className='relative flex space-x-3'>
 										<div className='md:w-24 md:h-24 h-24'>
-											<Image className='rounded-full w-full h-full object-cover' src={podcast.thumbnail} alt='podcast logo' width='300' height='300'/>
+											<Image className='rounded-full w-full h-full object-cover' src={podcast.thumbnail ? podcast.thumbnail : PodcastIcon} alt='podcast logo' width='300' height='300'/>
 										</div>
 										<div className='flex flex-col items-center justify-center'>
 											<div className='relative flex items-center space-x-2'>
