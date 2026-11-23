@@ -3,9 +3,7 @@ import { server } from '@/app/lib/server'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
-import {IoIosArrowDown} from 'react-icons/io'
 import {IoLogOutOutline} from 'react-icons/io5'
-import { GoChevronDown } from "react-icons/go";
 import { VscChevronDown } from "react-icons/vsc";
 const SignInButton = () => {
 	const { data: session } = useSession()
@@ -67,9 +65,6 @@ const SignInButton = () => {
 				<div className='w-[36px] h-[36px] rounded-full overflow-hidden border-[1px] border-border-gray'>
 					<Image className='w-full h-full object-cover' src={session.user.image} width={100} height={100} alt='User Image'/>
 				</div>
-				{/* <div>
-					<h1 className='text-gray-600 font-semibold truncate max-w-[105px]'>{session.user.name}</h1>
-				</div> */}
 				<div id='drop-down-arrow' className='duration-300'>
 					<VscChevronDown className='text-gray-600 text-xl' />
 				</div>

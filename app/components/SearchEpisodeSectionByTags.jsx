@@ -73,7 +73,6 @@ const SearchEpisodeSectionByTags = ({ tags, searchTagModalRefrence, episodeData 
 													<p className='text-gray-600 text-xs'>{Math.floor(section.duration / 3600) >= 10 ? Math.floor(section.duration / 3600) : '0' +  Math.floor(section.duration / 3600).toString()}:</p>
 													<p className='text-gray-600 text-xs'>{Math.floor(section.duration % 3600 / 60) >= 10 ? Math.floor(section.duration % 3600 / 60) : '0' +  Math.floor(section.duration % 3600 / 60).toString()}:</p>
 													<p className='text-gray-600 text-xs'>{Math.floor(section.duration % 60) >= 10 ? Math.floor(section.duration % 60) : '0' +  Math.floor(section.duration % 60).toString()}</p>
-													{/* <p className='text-gray-600 text-xs'>{Math.floor(section.duration / 3600) + ':' + Math.floor(section.duration % 3600 / 60) + ':' + Math.floor(section.duration % 60)}</p> */}
 												</div>
 											</div>
 										</Link>

@@ -3,7 +3,6 @@ import { server } from '@/app/lib/server'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { BsStar, BsStarFill } from 'react-icons/bs'
-import { IoClose } from 'react-icons/io5'
 import { GrStatusGood } from "react-icons/gr";
 
 export const FavoriteDesktopButton = ({ podcasts, id, users }) => {
@@ -131,13 +130,11 @@ export const FavoriteDesktopButton = ({ podcasts, id, users }) => {
 		</div>
 		{session ? 
 		<div className='flex'>
-			<span className='w-[.8px] h-[35px] bg-[rgb(232,234,237)] me-2'></span>
 			<div className='favorite-body'>
-				<div className='flex flex-col justify-center items-center'>
-					<button id='favorite' className='text-xl duration-150 select-none py-[2px]' onClick={changeFavorite}>
-						{isThisPodcastInfavorites ? <BsStarFill className='text-amber-500 text-xl'/> : <BsStar className='sm:text-xl text-lg'/>}
+				<div className='flex flex-col justify-center items-center rounded-full p-2 border-[1px] border-gray-600'>
+					<button id='favorite' className='text-lg duration-150 select-none' onClick={changeFavorite}>
+						{isThisPodcastInfavorites ? <BsStarFill className='text-amber-500 sm:text-xl text-xl'/> : <BsStar className='sm:text-lg text-lg'/>}
 					</button>
-					<p className='text-[11px] text-Gray'>add to favorite</p>
 				</div>
 			</div>
 		</div>
@@ -271,13 +268,11 @@ export const FavoriteMobileButton = ({ podcasts, id, users }) => {
 		</div>
 		{session ? 
 		<div className='flex'>
-			<span className='w-[.8px] h-[30px] bg-[rgb(232,234,237)] me-1'></span>
 			<div className='favorite-body'>
-				<div className='flex flex-col justify-center items-center'>
-					<button id='favorite' className='text-xl duration-150 select-none' onClick={changeFavorite}>
-						{isThisPodcastInfavorites ? <BsStarFill className='text-amber-500 sm:text-2xl text-xl'/> : <BsStar className='sm:text-2xl text-xl'/>}
+				<div className='flex flex-col justify-center items-center rounded-full p-2 border-[1px] border-gray-600'>
+					<button id='favorite' className='text-lg duration-150 select-none' onClick={changeFavorite}>
+						{isThisPodcastInfavorites ? <BsStarFill className='text-amber-500 sm:text-xl text-xl'/> : <BsStar className='sm:text-lg text-lg'/>}
 					</button>
-					<p className='text-xs text-Gray mt-1'>add to favorite</p>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 'use client'
-import {vazir , lalezar, nunito} from '@/app/utils/fonts'
+import {vazir, nunito, balooBhaijaan2} from '@/app/utils/fonts'
 import { AiFillStar } from 'react-icons/ai';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,44 +12,36 @@ import PodcastIcon from '@/app/img/podcast-icon.png'
 const Podcasts = ({ data }) => {
 	const [podcasts, setPodcasts] = useState(data);
 	const [loading, setLoading] = useState(false);
-	console.log(podcasts,'podacasts');
 	
   return (
-	<>
+	<div className={`${balooBhaijaan2.className}`}>
 		<SearchPodcasts setLoading={setLoading} getSearchResults={(results) => setPodcasts(results)}/>
-		{loading ? <SearchLoading /> : podcasts.length === 0 ? <div className={`${nunito.className} ${'flex items-center justify-center h-[400px] w-full text-lg'}`}><Image src={NoResult} /></div> : 
-		<div className='grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:mx-0 gap-x-6 gap-y-4 sm:px-0 mt-8'>
+		
+		{loading ? <SearchLoading /> : podcasts.length === 0 ? <div className={`${nunito.className} ${'flex items-center justify-center h-[400px] w-full text-lg'}`}><Image alt='No Result' src={NoResult} /></div> : 
+		<div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-2 sm:mx-0 sm:gap-x-6 sm:gap-y-4 gap-x-2 gap-y-4 sm:px-0 mt-8'>
 			{podcasts.map((podcast) => (
 			  	<Link href={`/podcasts/${podcast.id}`} key={podcast.id} className={vazir.className}>
-				  	<div className='hidden sm:flex flex-col items-center bg-white w-full rounded-xl overflow-hidden border-[1px] border-gray-150'>
-						<div className='w-full h-48 overflow-hidden'>
-							<div className='flex items-center w-full '>
-								<Image className='w-full h-48 object-cover' src={podcast.thumbnail ? podcast.thumbnail : PodcastIcon} alt='podcast image' width='300' height='300' />
+				  	<div className='flex flex-col items-center bg-white w-full rounded-2xl overflow-hidden border-[1px] border-gray-150 col-span-1'>
+						<div className='w-full h-fit'>
+							<div className='flex items-center w-full p-3'>
+								<Image className='w-full rounded-xl h-fit' src={podcast.thumbnail ? podcast.thumbnail : PodcastIcon} alt='podcast image' width={300} height={300} />
 							</div>
 						</div>
-						<div className='px-3 py-4 max-w-full'>
-							<h1 className='text-xl text-center font-semibold truncate'>{podcast.name}</h1>
-							<p className='h-[40px] overflow-hidden text-center text-sm text-Gray my-3'>{podcast.about}</p>
-							<div className='flex items-center justify-between mt-6'>
-								<span className='flex gap-x-1 text-amber-400 text-sm ms-1'>
-									<AiFillStar className='text-lg' />
-									<p>{podcast.stargazers_count}</p>
-								</span>
-								<span className={`${lalezar.className} ${'bg-[#0034ff14] px-1 rounded-md text-[#2e56f3ab] text-sm'}`}>
-									<p className=''>episodes: {podcast.episodes.length}</p>
-								</span>
-							</div>
-						</div>
-					</div>
-
-					{/* in mobile */}
-					<div className="sm:hidden block rounded-xl overflow-hidden border-[1px] border-gray-100">
-						<div className="flex bg-white rounded-xl">
-								<Image className="w-28 h-full object-cover border-e-[1px] border-gray" src={podcast.thumbnail ? podcast.thumbnail : PodcastIcon} alt="podcast thumbnail" width="300" height="300" />
-						 	<div className="flex items-center p-[6px] text-left space-y-1">
-								<div className='flex flex-col justify-center w-full h-full space-y-1'>
-										<h1 className='text-md font-semibold'>{podcast.name}</h1>
-						    			<p className="h-[60px] overflow-hidden text-sm text-Gray font-medium">{podcast.about}</p>
+						<div className='px-3 sm:py-4 pb-3 pt-1 w-full'>
+							<h1 className='sm:text-lg text-base font-semibold truncate'>{podcast.name}</h1>
+							<p className='sm:h-[40px] h-[35px] overflow-hidden sm:text-sm text-xs text-Gray sm:my-3 mt-2 line-clamp-2'>{podcast.about}</p>
+							<div className={`${balooBhaijaan2.className} ${'flex items-center justify-center bg-gray-50 rounded-lg p-2 sm:gap-6 gap-5 sm:mt-6 mt-4'}`}>
+								<div className='flex flex-col items-center justify-center'>
+									<span className='flex sm:gap-x-1 sm:text-base text-sm font-bold'>
+										<AiFillStar className='text-amber-400 sm:text-xl text-base' />
+										<p className=''>{podcast.stargazers_count}</p>
+									</span>
+									<span className='sm:text-sm text-xs text-gray-600'>Rating</span>
+								</div>
+								<span className='border-s-[1px] border-gray-300 w-[2px] h-6'></span>
+								<div className='flex flex-col items-center justify-center'>
+									<span className='flex gap-x-1 text-base font-bold ms-1'>{podcast.episodes.length}</span>
+									<span className='sm:text-sm text-xs text-gray-600'>Episodes</span>
 								</div>
 							</div>
 						</div>
@@ -57,7 +49,7 @@ const Podcasts = ({ data }) => {
 			  	</Link>
 			))}
 		</div>}
-	</>
+	</div>
   )
 }
 

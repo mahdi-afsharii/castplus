@@ -10,10 +10,9 @@ async function fetchPodcast() {
 const PodcastPage = async ({ params }) => {
 	const { episodeRoute, id } = await params
 	const res = await fetchPodcast();
-	console.log(id);
 	
   return (
-	<div className='container mx-auto'>
+	<div className=''>
 		<Episode data={res} episodeRoute={episodeRoute} id={id} />
 	</div>
   )

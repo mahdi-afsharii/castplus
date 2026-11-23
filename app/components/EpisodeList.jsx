@@ -1,45 +1,12 @@
 'use client'
-import SearchEpisodeSectionByTags from "./SearchEpisodeSectionByTags";
 import Link from "next/link";
 import Image from "next/image";
 import { vazir, lalezar, nunito } from "../utils/fonts";
 import { MdOutlinePodcasts } from 'react-icons/md'
-import { useState } from "react";
 import PodcastIcon from '@/app/img/podcast-icon.png'
 
 const EpisodeList = ({data}) => {
 	const episodes = data.episodes
-	// const [episodeIndex, setEpisodeIndex] = useState(0)
-	// const [selectedTag, setSelectedTag] = useState('')
-	// const [searchSection, setSearchSection] = useState()
-	// const [searchTagModalRef, setsearchTagModalRef] = useState(null)
-	// const tagsList = [];
-	// const getNonRepeatingTags = () => {
-	// 	let i = 0;
-	// 	episodes.forEach(episode => {
-	// 		tagsList.push({id: i, tags: []});
-	// 		episode.sections.forEach(section => {
-	// 			section.tags.forEach(tag => {
-	// 				if (!tagsList[i].tags.includes(tag.name)) {
-						
-	// 					tagsList[i].tags.push(tag.name);
-	// 				}
-	// 			})
-	// 		})
-	// 		i++;
-	// 	});
-	// }
-	// getNonRepeatingTags();
-
-	// const searchTagModal = (modal) => {
-	// 	setsearchTagModalRef(modal)
-	// }
-
-	// const showSearchTagModal = (e) => {
-	// 	searchTagModalRef.classList.remove('hidden');
-	// 	searchSection.changeInputValue(e)
-	// 	setSelectedTag(e);
-	// }
 
   return (
 	<>
@@ -65,17 +32,11 @@ const EpisodeList = ({data}) => {
 									</span>
 								</div>
 							</figcaption>
-							{/* <div className="space-x-1 sm:mt-2 mt-0 line-clamp-1 text-blue-500">
-								{tagsList.filter(tags => tags.id == episodes.indexOf(episode))[0].tags.map(tag => (
-									<div className="hover:text-blue-600 inline-block text-blue-500 bg-blue-100 sm:text-xs text-[11px] sm:px-2 px-1 sm:py-[2px] py-[1px] rounded-md cursor-pointer duration-75" onClick={(e) => {setEpisodeIndex(episodes.indexOf(episode)); showSearchTagModal(e.target.innerHTML);}}>{tag}</div>
-								))}
-							</div> */}
 						</div>
 					</figure>
 				</div>
 			))}
 	  	</div>}
-		{/* <SearchEpisodeSectionByTags tagsData={tagsList[episodeIndex]} selectedTag={selectedTag} searchTagModalRefrence={searchTagModal} episodeData={episodes[episodeIndex]} setSearchSection={setSearchSection} /> */}
 	</>
   )
 }
