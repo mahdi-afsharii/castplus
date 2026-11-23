@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect, useContext } from 'react'
+import { useState, useRef, useEffect, useContext, Suspense } from 'react'
 import {BsPlayFill, BsPauseFill} from 'react-icons/bs'
 import {ImVolumeHigh, ImVolumeMedium, ImVolumeLow, ImVolumeMute2} from 'react-icons/im'
 import {RiForward30Line, RiReplay10Line} from 'react-icons/ri'
@@ -8,6 +8,7 @@ import Sections from './Sections'
 import AudioLoading from './AudioLoading'
 import { EpisodeContext } from '@/app/context/EpisodeContext' 
 import CastPlusScrubWaveform from "@/app/components/Player/CastPlusScrubWaveform";
+import Loading from '../Loading'
 
 const Controller = ({ url , episode, isPlayerOpened, playerCollapsed, setImgWidth, setImgHeight }) => {
 	const [play, setPlay] = useState(true);
@@ -23,9 +24,7 @@ const Controller = ({ url , episode, isPlayerOpened, playerCollapsed, setImgWidt
 	const audio = useRef();
 
 	useEffect(() => {
-	//   if (audio.current) {
 		setAudioState(audio.current);
-	//   }
 	}, [url]);
 
 	const togglePlay = () => {
@@ -167,7 +166,11 @@ const Controller = ({ url , episode, isPlayerOpened, playerCollapsed, setImgWidt
 
   return (
 	<div className={`${vazir.className} ${"w-full"}`}>
-		{episode.length > 0 && episode.sections.length === 0 ? '' : <Sections isAudioPlay={setPlay} data={audio.current} episodes={episode} playerOpened={isPlayerOpened} isPlayerCollapsed={playerCollapsed} />}
+		{episode.length > 0 && episode.sections.length === 0 ? '' : 
+			<Suspense fallback={<Loading />}>
+				<Sections isAudioPlay={setPlay} data={audio.current} episodes={episode} playerOpened={isPlayerOpened} isPlayerCollapsed={playerCollapsed} />
+			</Suspense>
+		}
 
 		<audio ref={audio} src={url} onTimeUpdate={(e) =>{changeCurrentTime(e)}} onEnded={togglePlay} onCanPlayThrough={audioLoaded} autoPlay preload="metadata" onWaiting={() => setIsBuffering(true)} onCanPlay={() => setIsBuffering(false)} ></audio>
 

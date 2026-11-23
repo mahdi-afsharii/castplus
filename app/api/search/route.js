@@ -5,6 +5,6 @@ export async function POST(request) {
 	const { query } = await request.json();
 	const client = await clientPromise
 	let db = client.db('castplus')
-	const filteredPodcasts = await db.collection('podcasts').find({"name":{$regex: query}}).toArray()
+	const filteredPodcasts = await db.collection('podcasts').find({"name":{$regex: query, $options: 'i'}}).toArray()
 	return NextResponse.json(filteredPodcasts);
 }

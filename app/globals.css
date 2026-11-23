@@ -44,7 +44,7 @@ body{
 .loading-item{
     width: 5px;
     height: 40px;
-    background-color: #2e56f3;
+    background-color: #418FF5;
     border-radius: 100px;
     animation: wave 1s ease-in-out infinite;
 }

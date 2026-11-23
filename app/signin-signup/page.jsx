@@ -1,11 +1,10 @@
 'use client'
-import { useRouter } from 'next/navigation'
 import { nunito } from '../utils/fonts';
-import { useState , useEffect} from 'react';
-import {VscEye, VscEyeClosed} from 'react-icons/vsc'
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import Image from 'next/image';
 import LogoWhite from '@/app/img/logo CastPlus white blue.svg'
+import { Suspense } from 'react';
+import Loading from '../components/Loading';
 
 const LoginSignUpPage = () => {
   return (
@@ -16,7 +15,9 @@ const LoginSignUpPage = () => {
 			</div>
 			<p className='mt-2 text-gray-600'>Welcome To CastPlus</p>
 			<div id="login-form" className="w-full mt-2 mb-6 px-5 sm:px-10">
-				<GoogleSignInButton />
+				<Suspense fallback={<Loading />}>
+					<GoogleSignInButton />
+				</Suspense>
 			</div>
 		</div>
 	</div>
