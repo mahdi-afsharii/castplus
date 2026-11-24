@@ -15,7 +15,7 @@ const ChapterModal = ({ chapterOpen, setChapterOpen }) => {
   return (
     <div className={`${chapterOpen ? "max-lg:fixed" : "max-lg:hidden"} ${'top-0 bg-black w-full h-full z-50'}`}>
         <div className='lg:hidden flex relative justify-between my-2'>
-            <span className='cursor-pointer' onClick={() => setChapterOpen(false)}><IoClose className='text-white text-3xl p-3 box-content'></IoClose></span>
+            <span className='cursor-pointer' onClick={() => setChapterOpen(false)}><IoClose className='text-white text-3xl ms-3 p-3 box-content'></IoClose></span>
         </div>
         <div className='overflow-y-auto scrollbar-hide lg:h-[92vh] h-[85vh]'>
             <div className='max-lg:container mx-auto'>

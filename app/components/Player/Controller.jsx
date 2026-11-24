@@ -136,6 +136,9 @@ const Controller = ({ url , episode, isPlayerOpened, playerCollapsed, setImgWidt
 	}
 
 	const audioLoaded = () => {
+		if (load) {
+			audio.current.pause();
+		}
 		setLoad(false);
 		setDuration(audio.current.duration);
 		setAudio(audio.current)

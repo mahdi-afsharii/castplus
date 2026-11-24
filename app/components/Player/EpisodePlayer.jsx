@@ -24,9 +24,11 @@ const EpisodePlayer = () => {
   const [imageHeight, setImageHeight] = useState(220);
   const [isTranscriptOpen, setIsTranscriptOpen] = useState(false);
   const [isChapterOpen , setIsChapterOpen] = useState(false)
+  const [isAudioPlay, setIsAudioPlay] = useState(false)
 
   const togglePlay = () => {
     audio.paused ? audio.play() : audio.pause();
+    setIsAudioPlay(prev => !prev);
   }
 
   const collapseClose = () => {
@@ -39,10 +41,10 @@ const EpisodePlayer = () => {
   
   return (
     <>
-      <div className={isPlayerCollapsed ? "fixed flex justify-center w-full lg:bottom-5 bottom-[90px] z-[51]" : "hidden"}>
-        <div id='mini-player-container' className={`${vazir.className} ${'flex justify-between items-center backdrop-blur-md bg-gray-50/80 w-full h-16 rounded-[20px] shadow-2xl mx-7'} ${miniPlayerEnter ? "music-player-enter" : ""}`}>
-          <div className='grid grid-cols-6 w-full'>
-            <div id='mini-player-content' className='grid gap-3 p-3 col-span-5 grid-cols-5' onClick={() => {setIsPlayerCollapsed(false); collapseOpen()}} >
+      <div className={isPlayerCollapsed ? "fixed flex lg:justify-end justify-center w-full lg:bottom-5 bottom-[90px] z-[51]" : "hidden"}>
+        <div id='mini-player-container' className={`${vazir.className} ${'flex justify-between items-center backdrop-blur-md bg-gray-50/80 lg:w-fit w-full h-16 rounded-[20px] shadow-2xl mx-7'} ${miniPlayerEnter ? "music-player-enter" : ""}`}>
+          <div className='grid md:max-lg:grid-cols-12 grid-cols-6 w-full'>
+            <div id='mini-player-content' className='grid gap-3 p-3 md:max-lg:col-span-11 col-span-5 md:max-lg:grid-cols-10 grid-cols-5' onClick={() => {setIsPlayerCollapsed(false); collapseOpen()}} >
               <div className='relative col-span-1'>
                 <Image alt='Episode Thumbnail' src={episode.thumbnail ? episode.thumbnail : PodcastIcon} width={45} height={45} id='mini-player-image-shadow' className='absolute min-w-[45px] min-h-[45px] -top-[3px] left-0 rounded-xl' />
                 <Image alt='Episode Thumbnail' src={episode.thumbnail ? episode.thumbnail : PodcastIcon} width={45} height={45} className='absolute min-w-[45px] min-h-[45px] -top-[3px] left-0 rounded-xl' />

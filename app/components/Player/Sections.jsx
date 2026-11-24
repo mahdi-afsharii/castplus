@@ -105,6 +105,7 @@ const SectionsPage = ({data, episodes, isAudioPlay}) => {
 		if(audio) {
 			autoChangeActiveBtn();
 			setMainSection(sectionIndex);
+			removeScrollBtn()
 		}
 	}, [sectionIndex]);
 

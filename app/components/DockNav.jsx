@@ -56,8 +56,8 @@ const DockNav = () => {
                 }
             </div>
         </Link>
-        <div className='flex flex-col gap-1 items-center' onClick={signIn}>
-            <Link href={'/signin-signup'} >
+        <div onClick={signIn}>
+            <Link className='flex flex-col gap-1 items-center' href={'/signin-signup'} >
                     {url.includes('/profile') ? 
                         <>
                             <HiUserCircle className='text-3xl  text-[#418ff5] bg-[#e0eeff] px-4 py-1 rounded-full box-content' />
